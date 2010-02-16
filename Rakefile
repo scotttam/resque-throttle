@@ -5,12 +5,14 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "resque-throttle"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{resque-throttle is an extension to the resque queue system that restricts the frequency in which certain jobs are run.}
+    gem.description = %Q{resque-throttle is an extension to the resque queue system that restricts the frequency in which certain jobs are run.}
     gem.email = "scott@zendesk.com"
-    gem.homepage = "http://github.com/scotttam/resque-throttle"
+    gem.homepage = "http://github.com/zendesk/resque-throttle"
     gem.authors = ["scotttam"]
+    gem.add_dependency "resque", ">=1.4.0"
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_development_dependency "mocha", ">=0.9.8"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
