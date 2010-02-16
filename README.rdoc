@@ -14,4 +14,4 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2010 scotttam. See LICENSE for details.
+Copyright (c) 2010 Zendesk. See LICENSE for details.
