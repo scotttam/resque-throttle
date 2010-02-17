@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{resque-throttle}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["scotttam"]
-  s.date = %q{2010-02-16}
+  s.date = %q{2010-02-17}
   s.description = %q{resque-throttle is an extension to the resque queue system that restricts the frequency in which certain jobs are run.}
   s.email = %q{scott@zendesk.com}
   s.extra_rdoc_files = [
@@ -23,7 +23,14 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
-     "test/helper.rb"
+     "lib/init.rb",
+     "lib/resque/resque.rb",
+     "lib/resque/throttle.rb",
+     "lib/resque/throttled_job.rb",
+     "resque-throttle.gemspec",
+     "test/resque/resque_test.rb",
+     "test/resque/throttled_job_test.rb",
+     "test/test_helper.rb"
   ]
   s.homepage = %q{http://github.com/zendesk/resque-throttle}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -31,8 +38,9 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{resque-throttle is an extension to the resque queue system that restricts the frequency in which certain jobs are run.}
   s.test_files = [
-    "test/helper.rb",
-     "test/throttled_job_test.rb"
+    "test/resque/resque_test.rb",
+     "test/resque/throttled_job_test.rb",
+     "test/test_helper.rb"
   ]
 
   if s.respond_to? :specification_version then
