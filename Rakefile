@@ -6,7 +6,7 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "resque-throttle"
     gem.summary = %Q{resque-throttle is an extension to the resque queue system that restricts the frequency in which certain jobs are run.}
-    gem.description = %Q{resque-throttle is an extension to the resque queue system that restricts the frequency in which certain jobs are run.}
+    gem.description = %Q{resque-throttle is an extension to the resque queue system that restricts the frequency in which certain jobs are run. Add more description here.}
     gem.email = "scott@zendesk.com"
     gem.homepage = "http://github.com/zendesk/resque-throttle"
     gem.authors = ["scotttam"]
