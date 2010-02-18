@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{resque-throttle}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["scotttam"]
-  s.date = %q{2010-02-17}
+  s.authors = ["Scott J. Tamosunas"]
+  s.date = %q{2010-02-18}
   s.description = %q{resque-throttle is an extension to the resque queue system that restricts the frequency in which certain jobs are run. Add more description here.}
   s.email = %q{scott@zendesk.com}
   s.extra_rdoc_files = [
