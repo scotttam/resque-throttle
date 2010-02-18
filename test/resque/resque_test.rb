@@ -1,4 +1,4 @@
-require 'test_helper.rb'
+require '../test_helper.rb'
 
 class ResqueTest < Test::Unit::TestCase
 
@@ -22,6 +22,11 @@ class ResqueTest < Test::Unit::TestCase
           Resque.expects(:enqueue_without_throttle).once
           assert_raises(Resque::ThrottledError) { 2.times { Resque.enqueue(OneHourThrottledJob, @bogus_args) } }
         end
+      end
+
+      should "enqueue a job without throttling if the job is disabled" do
+        Resque.expects(:enqueue_without_throttle).twice
+        2.times { Resque.enqueue(DisabledThrottledJob, @bogus_args) }
       end
     end
   end

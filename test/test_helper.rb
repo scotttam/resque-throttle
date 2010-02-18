@@ -23,10 +23,12 @@ end
 class OneHourThrottledJob < Resque::ThrottledJob
   @queue = :some_queue
 
-  def self.throttle
-    3600
-  end
-  
+  throttle :can_run_every => 3600,
+           :enqueued => "Yada Yada",
+           :throttled => "Yada Yada",
+           :latest => "Yada Yada"
+
+
   def self.perform(some_id, some_other_thing)
   end
 end
@@ -34,10 +36,17 @@ end
 class IdetifierThrottledJob < Resque::ThrottledJob
   @queue = :some_queue
 
-  def self.identifier
-    "my_identifier"
+  throttle :identifier => "my_identifier" 
+
+  def self.perform(some_id, some_other_thing)
   end
-  
+end
+
+class DisabledThrottledJob < Resque::ThrottledJob
+  @queue = :some_queue
+
+  throttle :disabled => true
+
   def self.perform(some_id, some_other_thing)
   end
 end

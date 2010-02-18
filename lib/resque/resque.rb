@@ -18,14 +18,14 @@ module Resque
   private
    
   def should_throttle?(klass)
-    return false unless throttle_job?(klass)
-    
-    if redis.get(klass.key)
-      return true
-    else
-      redis.set(klass.key, true, klass.throttle)
-      return false
-    end
+    return false if !throttle_job?(klass) || klass.disabled
+    return true if key_found?(klass)
+    redis.set(klass.key, true, klass.can_run_every)
+    return false
+  end
+
+  def key_found?(klass)
+     redis.get(klass.key)
   end
 
   def throttle_job?(klass)
