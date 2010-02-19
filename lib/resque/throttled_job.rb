@@ -5,9 +5,6 @@ module Resque
 
     THROTTLE_DEFAULTS = {
         :can_run_every => 1800,
-        :enqueued      => 'Your job has been submitted. You will receive an email with a download link shortly.',
-        :throttled     => 'Frequency has been exceeded. Job not submitted. Try again a little later.',
-        :latest        => 'Download the most recent result',
         :disabled      => false,
         :identifier    => nil
     }

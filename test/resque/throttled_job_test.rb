@@ -28,36 +28,6 @@ class ThrottledJobTest < Test::Unit::TestCase
         end
       end
 
-      context "#enqueued" do
-        should "have a default message if not overrriden" do
-          assert_equal "Your job has been submitted. You will receive an email with a download link shortly.", DefaultThrottledJob.enqueued
-        end
-
-        should "be able to be overriden" do
-          assert_equal "Yada Yada", OneHourThrottledJob.enqueued
-        end
-      end
-
-      context "#throttled" do
-        should "have a default message if not overrriden" do
-          assert_equal "Frequency has been exceeded. Job not submitted. Try again a little later.", DefaultThrottledJob.throttled
-        end
-
-        should "be able to be overriden" do
-          assert_equal "Yada Yada", OneHourThrottledJob.throttled
-        end
-      end
-
-      context "#latest" do
-        should "have a default message if not overrriden" do
-          assert_equal "Download the most recent result", DefaultThrottledJob.latest
-        end
-
-        should "be able to be overriden" do
-          assert_equal "Yada Yada", OneHourThrottledJob.latest
-        end
-      end
-
       context "#disabled" do
         should "not be disabled by default" do
           assert !DefaultThrottledJob.disabled

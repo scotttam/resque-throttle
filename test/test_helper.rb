@@ -23,10 +23,7 @@ end
 class OneHourThrottledJob < Resque::ThrottledJob
   @queue = :some_queue
 
-  throttle :can_run_every => 3600,
-           :enqueued => "Yada Yada",
-           :throttled => "Yada Yada",
-           :latest => "Yada Yada"
+  throttle :can_run_every => 3600
 
 
   def self.perform(some_id, some_other_thing)
