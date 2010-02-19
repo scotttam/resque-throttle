@@ -1,2 +1,3 @@
 require "resque/resque"
-require "resque/thottle"
+require "resque/throttle"
+require "resque/throttled_job"
