@@ -1,7 +1,7 @@
 module Resque
   class SettingNotFound < RuntimeError; end
 
-  class ThrottledJob < Job
+  class ThrottledJob
 
     THROTTLE_DEFAULTS = {
         :can_run_every => 1800,

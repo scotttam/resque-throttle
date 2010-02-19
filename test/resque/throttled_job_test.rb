@@ -4,7 +4,7 @@ class ThrottledJobTest < Test::Unit::TestCase
 
   context "Resque::ThrottledJob" do
     should "instantiate a new Resque::ThrottledJob" do
-      assert Resque::ThrottledJob.new(:queue_name, OneHourThrottledJob)
+      assert Resque::ThrottledJob.new
     end
 
     context "settings" do
