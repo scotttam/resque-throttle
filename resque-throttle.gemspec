@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{resque-throttle}
-  s.version = "0.2.2"
+  s.version = "0.2.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Scott J. Tamosunas"]
@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
-     "lib/init.rb",
+     "lib/resque-throttle.rb",
      "lib/resque/resque.rb",
      "lib/resque/throttle.rb",
      "lib/resque/throttled_job.rb",
