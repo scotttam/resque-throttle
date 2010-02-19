@@ -1,4 +1,4 @@
-require '../test_helper.rb'
+require 'test_helper.rb'
 
 class ThrottledJobTest < Test::Unit::TestCase
 
