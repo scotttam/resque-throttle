@@ -7,8 +7,8 @@ begin
     gem.name = "resque-throttle"
     gem.summary = %Q{resque-throttle is an extension to the resque queue system that restricts the frequency in which certain jobs are run.}
     gem.description = %Q{resque-throttle is an extension to the resque queue system that restricts the frequency in which certain jobs are run. Add more description here.}
-    gem.email = "scott@zendesk.com"
-    gem.homepage = "http://github.com/zendesk/resque-throttle"
+    gem.email = "tamosunas@gmail.com"
+    gem.homepage = "http://github.com/scotttam/resque-throttle"
     gem.authors = ["Scott J. Tamosunas"]
     gem.add_dependency "resque", ">=1.4.0"
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
