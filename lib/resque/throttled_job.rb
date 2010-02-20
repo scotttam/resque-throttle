@@ -6,7 +6,6 @@ module Resque
     THROTTLE_DEFAULTS = {
         :can_run_every => 1800,
         :disabled      => false,
-        :identifier    => nil
     }
 
     def self.settings
@@ -17,13 +16,20 @@ module Resque
       settings.merge!(args)
     end
 
-    def self.key
-      [self.to_s, identifier].compact.join(":")
+    def self.identifier(*args)
     end
 
-    def self.method_missing(method, *args)
-      raise SettingNotFound("Could not find the #{method} setting") if !settings.key?(method)
-      settings[method]
+    def self.key(*args)
+      [self.to_s, identifier(*args)].compact.join(":")
     end
+
+    def self.can_run_every
+      settings[:can_run_every]
+    end
+
+    def self.disabled
+      settings[:disabled]
+    end
+
   end
 end
