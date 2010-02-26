@@ -6,15 +6,15 @@ class ResqueTest < Test::Unit::TestCase
     setup do
       Resque.redis.flush_all
       assert_nil Resque.redis.get(OneHourThrottledJob.key)
-      @bogus_args = [1, 2]
+      @bogus_args = "bogus_arg"
     end
 
     context "#enqueue" do
       should "add a throttled job key to the set with the proper TTL (Expire)" do
         Resque.expects(:enqueue_without_throttle).returns(true) 
-        assert Resque.enqueue(OneHourThrottledJob, @bogus_args)
-        assert Resque.redis.get(OneHourThrottledJob.key)
-        assert_equal 3600, Resque.redis.ttl(OneHourThrottledJob.key)
+        assert Resque.enqueue(IdentifierThrottledJob, @bogus_args)
+        assert Resque.redis.keys('*').include?("resque:IdentifierThrottledJob:my_bogus_arg")
+        assert_equal 3600, Resque.redis.ttl(IdentifierThrottledJob.key(@bogus_args))
       end
       
       context "job has not reached throttle limit" do

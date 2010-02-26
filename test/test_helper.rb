@@ -28,7 +28,7 @@ class OneHourThrottledJob < Resque::ThrottledJob
   end
 end
 
-class IdetifierThrottledJob < Resque::ThrottledJob
+class IdentifierThrottledJob < Resque::ThrottledJob
   @queue = :some_queue
 
   throttle :can_run_every => 3600
@@ -37,7 +37,8 @@ class IdetifierThrottledJob < Resque::ThrottledJob
   end
   
   def self.identifier(*args)
-    "my_identifier"
+    first, second = *args
+    "my_#{first}"
   end
 end
 

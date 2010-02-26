@@ -7,7 +7,7 @@ module Resque
   class ThrottledError < RuntimeError; end
       
   def enqueue_with_throttle(klass, *args)
-    if should_throttle?(klass)
+    if should_throttle?(klass, args)
       raise ThrottledError.new("#{klass} with key #{klass.key} has exceeded it's throttle limit")
     end
     enqueue_without_throttle(klass, *args)
@@ -17,15 +17,15 @@ module Resque
 
   private
    
-  def should_throttle?(klass)
+  def should_throttle?(klass, *args)
     return false if !throttle_job?(klass) || klass.disabled
-    return true if key_found?(klass)
-    redis.set(klass.key, true, klass.can_run_every)
+    return true if key_found?(klass, args)
+    redis.set(klass.key(args), true, klass.can_run_every)
     return false
   end
 
-  def key_found?(klass)
-     redis.get(klass.key)
+  def key_found?(klass, *args)
+     redis.get(klass.key(args))
   end
 
   def throttle_job?(klass)

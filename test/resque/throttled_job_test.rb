@@ -20,7 +20,7 @@ class ThrottledJobTest < Test::Unit::TestCase
 
       context "#identifier" do
         should "return an additional key identifier used in storing the key in the redis SET" do
-          assert_equal "my_identifier", IdetifierThrottledJob.identifier
+          assert_equal "my_identifier", IdentifierThrottledJob.identifier("identifier")
         end
 
         should "return nil if not defined" do
@@ -41,7 +41,7 @@ class ThrottledJobTest < Test::Unit::TestCase
 
     context "#key" do
       should "consist of the class name and the identifier" do
-        assert_equal "IdetifierThrottledJob:my_identifier", IdetifierThrottledJob.key
+        assert_equal "IdentifierThrottledJob:my_identifier", IdentifierThrottledJob.key("identifier")
       end
 
       should "consist of just the class name if the identifier is not provided" do
