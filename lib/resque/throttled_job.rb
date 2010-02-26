@@ -30,6 +30,5 @@ module Resque
     def self.disabled
       settings[:disabled]
     end
-
   end
 end

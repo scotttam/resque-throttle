@@ -10,7 +10,7 @@ module Resque
     if should_throttle?(klass, args)
       raise ThrottledError.new("#{klass} with key #{klass.key} has exceeded it's throttle limit")
     end
-    enqueue_without_throttle(klass, *args)
+    enqueue_without_throttle(klass, args)
   end
   alias_method :enqueue_without_throttle, :enqueue
   alias_method :enqueue, :enqueue_with_throttle
