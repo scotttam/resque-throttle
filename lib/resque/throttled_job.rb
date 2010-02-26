@@ -20,7 +20,7 @@ module Resque
     end
 
     def self.key(*args)
-      [self.to_s, identifier(args)].compact.join(":")
+      [self.to_s, identifier(*args)].compact.join(":")
     end
 
     def self.can_run_every
