@@ -19,19 +19,21 @@ In your class, add the can_run_every in which the job should be throttled. Examp
 
 By default, the key which identifies the job is simply the class name. If you'd like
 to override that to be more granular, you can do that in the identifier class method
-by returning a string. Example:
+by returning a string. For example, if you want the job to be limit to once a day per
+account, do something like the following:
 
 	class MyThrottledJob < Resque::ThrottledJob
 	  throttle :can_run_every => 24.hours
 
 	  def self.identifier(*args)
-	    some_id = *args
-	    thing = MyClass.find_by_id(some_id)
-	    "some_id:#{thing.thing_id}"
+	    account_id = *args
+	    "account_id:#{account_id}"
 	  end
 
 	  #rest of your class here
 	end
+
+The *args passed to identifier are the same arguments that are passed to perform.
 
 When a job is throttled, it will raise a ThrottledError and the job will not be enqueued.
 
