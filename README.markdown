@@ -17,9 +17,13 @@ In your class, add the can_run_every in which the job should be throttled. Examp
 	  #rest of your class here
 	end
 
-By default, the key which identifies the job is simply the class name. If you'd like
-to override that to be more granular, you can do that in the identifier class method
-by returning a string. For example, if you want the job to be limit to once a day per
+By default, the key which identifies the job is simply the class name. This "identifier"
+is stored in a redis key with a TTL equal to that of the can_run_every. Thus the 
+default behavior is a single Job class inheriting from Resque::ThrottledJob can only 
+run every 30 minutes. 
+
+If you'd like to override that to be more granular, you can do that in the identifier class method
+by returning a string. For example, if you want the job to be limited to once a day per
 account, do something like the following:
 
 	class MyThrottledJob < Resque::ThrottledJob
