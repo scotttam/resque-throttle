@@ -1,9 +1,9 @@
 resque-throttle
 ===============
 
-Resque throttle is a plugin for the [Resque][0] queueing system
-(http://github.com/defunkt/resque). It adds a ThrottledJob class that will be
-limited to the amount of times it can be enqueued per instance. 
+Resque Throttle is a plugin for the [Resque][0] queueing system
+(http://github.com/defunkt/resque). It adds a ThrottledJob class that will
+limit the amount of times it can be enqueued per class. 
 
 To use
 ------
@@ -33,10 +33,12 @@ by returning a string. Example:
 	  #rest of your class here
 	end
 
+When a job is throttled, it will raise a ThrottledError and the job will not be enqueued.
+
 Contributing
 ------------
 
-Once you've made your great commits:
+Once you've made your commits:
 
 1. [Fork][1] Resque Throttle
 2. Create a topic branch - `git checkout -b my_branch`
