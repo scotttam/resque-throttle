@@ -5,7 +5,7 @@ module Resque
 
   # Raised when trying to create a job that is throttled
   class ThrottledError < RuntimeError; end
-      
+
   def enqueue_with_throttle(klass, *args)
     if should_throttle?(klass, *args)
       raise ThrottledError.new("#{klass} with key #{klass.key(*args)} has exceeded it's throttle limit")
@@ -16,11 +16,12 @@ module Resque
   alias_method :enqueue, :enqueue_with_throttle
 
   private
-   
+
   def should_throttle?(klass, *args)
     return false if !throttle_job?(klass) || klass.disabled
     return true if key_found?(klass, *args)
-    redis.set(klass.key(*args), true, klass.can_run_every)
+    redis.set(klass.key(*args), true)
+    redis.expire(klass.key(*args), klass.can_run_every)
     return false
   end
 
@@ -29,6 +30,6 @@ module Resque
   end
 
   def throttle_job?(klass)
-    klass.ancestors.include?(Resque::ThrottledJob)  
+    klass.ancestors.include?(Resque::ThrottledJob)
   end
 end
