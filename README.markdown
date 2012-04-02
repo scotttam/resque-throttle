@@ -58,7 +58,7 @@ Scott J. Tamosunas :: tamosunas@gmail.com :: @scotttam
 
 Copyright
 ---------
-Copyright (c) 2010 Zendesk. See LICENSE for details.
+Copyright (c) 2010 Scott J. Tamosunas. See LICENSE for details.
 
 [0]: http://github.com/defunkt/resque
 [1]: http://help.github.com/forking/

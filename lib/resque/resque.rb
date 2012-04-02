@@ -3,7 +3,6 @@ require "resque/throttle"
 module Resque
   extend self
 
-  # Raised when trying to create a job that is throttled
   class ThrottledError < RuntimeError; end
       
   def enqueue_with_throttle(klass, *args)
@@ -20,7 +19,7 @@ module Resque
   def should_throttle?(klass, *args)
     return false if !throttle_job?(klass) || klass.disabled
     return true if key_found?(klass, *args)
-    redis.set(klass.key(*args), true, klass.can_run_every)
+    set(klass.key(*args), klass.can_run_every)
     return false
   end
 
@@ -30,5 +29,13 @@ module Resque
 
   def throttle_job?(klass)
     klass.ancestors.include?(Resque::ThrottledJob)  
+  end
+
+  def set(key, can_run_every)
+    if redis.respond_to?(:setex)
+      redis.setex(key, can_run_every, true)
+    else
+      redis.set(key, true, can_run_every)
+    end
   end
 end
