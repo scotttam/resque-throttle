@@ -22,7 +22,7 @@ end
 
 class OneHourThrottledJob < Resque::ThrottledJob
   @queue = :some_queue
-  throttle :can_run_every => 3600
+  throttle :can_run_every => 3600, throws_exception: true, reset_on_failure: false
 
   def self.perform(some_id, some_other_thing)
   end
@@ -31,7 +31,7 @@ end
 class IdentifierThrottledJob < Resque::ThrottledJob
   @queue = :some_queue
 
-  throttle :can_run_every => 3600
+  throttle :can_run_every => 3600, throws_exception: true
 
   def self.perform(some_id, some_other_thing)
   end

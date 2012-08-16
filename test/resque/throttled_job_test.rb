@@ -37,6 +37,16 @@ class ThrottledJobTest < Test::Unit::TestCase
           assert DisabledThrottledJob.disabled
         end
       end
+
+      context "#throws_exception" do
+        should "not throw exception by default" do
+          assert !DefaultThrottledJob.throws_exception
+        end
+
+        should "be able to be overriden" do
+          assert OneHourThrottledJob.throws_exception
+        end
+      end
     end
 
     context "#key" do

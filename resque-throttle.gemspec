@@ -23,8 +23,6 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/resque-throttle.rb",
-    "lib/resque/resque.rb",
-    "lib/resque/throttle.rb",
     "lib/resque/throttled_job.rb",
     "resque-throttle.gemspec",
     "test/resque/resque_test.rb",
