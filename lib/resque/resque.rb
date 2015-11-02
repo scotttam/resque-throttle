@@ -14,6 +14,10 @@ module Resque
   alias_method :enqueue_without_throttle, :enqueue
   alias_method :enqueue, :enqueue_with_throttle
 
+  def has_key?(klass, *args)
+    return key_found?(klass, *args)
+  end
+
   private
    
   def should_throttle?(klass, *args)
